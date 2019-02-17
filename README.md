@@ -36,6 +36,17 @@ cd <project_name>
 python manage.py startapp <app_name>
 ```
 
+## Installation des dépendances
+
+```
+pip install -r requirements.txt
+```
+
+## Lancement des migrations
+
+```
+./manage.py migrate
+```
 
 ## Lancement du serveur
 
