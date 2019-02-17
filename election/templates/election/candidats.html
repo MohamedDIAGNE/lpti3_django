@@ -1,3 +1,6 @@
+{% extends 'election/base.html' %}
+
+{% block content %}
 <h2>Liste des candidats</h2>
 
 <table>
@@ -24,3 +27,6 @@
 <div>
     <a href="{% url 'election:ajout_candidat' %}">Ajouter un candidat</a>
 </div>
+
+
+{% endblock %}

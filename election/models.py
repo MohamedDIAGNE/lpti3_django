@@ -19,10 +19,15 @@ class Electeur(models.Model):
     a_vote = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     bureau = models.ForeignKey("Bureau", on_delete=models.CASCADE)
-    candidat = models.ForeignKey("Candidat", on_delete=models.CASCADE)
+    candidat = models.ForeignKey("Candidat", null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.numero_cni
+
+    def vote(self, candidat):
+        self.candidat = candidat
+        self.a_vote = True
+        self.save()
 
 
 class Candidat(models.Model):
@@ -34,6 +39,10 @@ class Candidat(models.Model):
 
     def __str__(self):
         return self.parti
+
+    def ajout_vote(self):
+        self.nb_voix += 1
+        self.save()
 
 
 class Bureau(models.Model):
